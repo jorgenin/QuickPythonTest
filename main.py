@@ -5,6 +5,105 @@ from pyxirr import xirr # Import xirr
 from pyxirr import mirr # Import mirr
 
 st.set_page_config(page_title="Battery Storage NPV Model", layout="wide")
+
+st.html(
+    """
+    <details>
+        <summary style="cursor: pointer; font-weight: bold; color: #2a9df4;">Click to view/hide Tool Explanation & Instructions</summary>
+        <div style="background-color: #f0f2f6; padding: 20px; border-radius: 10px; margin-top: 10px;">
+        <h2 style="color: #2a9df4;">🔋 Battery Storage Project NPV & Cash Flow Analyzer</h2>
+        <p>This tool helps analyze the financial viability of a battery storage project from both the customer's and EQORE's perspective.
+        It calculates Net Present Value (NPV), Internal Rate of Return (IRR), Modified Internal Rate of Return (MIRR), and Discounted Payback Period.</p>
+
+        <h4>How to Use:</h4>
+        <ul style="padding-left: 20px;>
+            <li><b>Load an Example (Optional):</b> Click "Thermofusion Example" or "Aalberts Example" in the sidebar to pre-fill inputs with sample data.</li>
+            <li><b>Adjust Inputs:</b> Modify the parameters in the sidebar sections:
+                <ul style="padding-left: 20px;">
+                    <li><b>Project & Savings section:</b> Define the core project characteristics and electricity savings.</li>
+                    <li><b>Tax & Depreciation section:</b> Set corporate tax rates, IRA tax credits, and depreciation schedules.</li>
+                    <li><b>Financing section:</b> Specify loan terms if the project is financed.</li>
+                </ul>
+            </li>
+            <li><b>Review Outputs:</b> The main panel will display:
+                <ul style="padding-left: 20px;">
+                    <li><b>Key Outputs:</b> NPVs for different components, overall project NPV, customer NPV, IRR, MIRR, and payback period.</li>
+                    <li><b>Annual Cash Flows Table:</b> A detailed year-by-year breakdown of cash flows for the customer, EQORE, and the total project.</li>
+                    <li><b>Charts:</b> Visualizations of EQORE's and the customer's cash flows over the project life.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Sidebar Input Sections:</h4>
+        <ul style="padding-left: 20px;">
+            <li><strong>Examples:</strong> Quick-load predefined scenarios.</li>
+            <li><strong>Project & Savings:</strong>
+                <ul style="padding-left: 20px;">
+                    <li><b>Upfront Investment ($):</b> Total initial cost of the battery system.</li>
+                    <li><b>Discount Rate (%):</b> Annual rate used to discount future cash flows to their present value. Reflects the time value of money and risk.</li>
+                    <li><b>Project Life (years):</b> Expected operational lifetime of the battery system.</li>
+                    <li><b>Year-1 Electricity Savings ($):</b> Estimated electricity bill savings in the first year of operation.</li>
+                    <li><b>Savings Escalation Rate (%):</b> Annual rate at which electricity savings are expected to increase (e.g., due to rising utility prices).</li>
+                    <li><b>EQORE Savings Share (%):</b> The percentage of total gross electricity savings allocated to EQORE. The remainder goes to the customer.</li>
+                </ul>
+            </li>
+            <li><strong>Tax & Depreciation:</strong>
+                <ul style="padding-left: 20px;">
+                    <li><b>Federal Corp Tax Rate (%):</b> Corporate income tax rate applicable to the customer.</li>
+                    <li><b>IRA Tax Credit (%):</b> Percentage of the investment eligible for an Investment Tax Credit under the Inflation Reduction Act.</li>
+                    <li><b>Bonus Depreciation (%):</b> Percentage of the investment that can be depreciated immediately in Year 0.</li>
+                    <li><em>MACRS rates are pre-defined for a 5-year schedule.</em></li>
+                </ul>
+            </li>
+            <li><strong>Financing:</strong>
+                <ul style="padding-left: 20px;">
+                    <li><b>Percent Financed (%):</b> Portion of the upfront investment covered by a loan.</li>
+                    <li><b>Loan Interest Rate (%):</b> Annual interest rate on the loan.</li>
+                    <li><b>Loan Term (years):</b> Duration over which the loan will be repaid.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Main Panel Outputs:</h4>
+        <ul style="padding-left: 20px;">
+            <li><strong>Key Outputs:</strong> Summarizes the main financial metrics.
+                <ul style="padding-left: 20px;">
+                    <li><b>NPV of ... Savings/Shields:</b> Present value of various cash flow streams like gross savings, tax shields from depreciation and interest.</li>
+                    <li><b>IRA Tax Credit & Loan Principal:</b> Values received by the customer at the start (t=0).</li>
+                    <li><b>Down Payment / Equity:</b> Customer's initial cash outlay.</li>
+                    <li><b>EQORE's Net NPV:</b> Net present value of cash flows to EQORE.</li>
+                    <li><b>Customer's Net NPV:</b> Net present value of cash flows to the customer. A positive NPV generally indicates a financially attractive project for the customer.</li>
+                    <li><b>Customer's IRR:</b> Internal Rate of Return for the customer. The discount rate at which the NPV of customer cash flows is zero. Higher is generally better.</li>
+                    <li><b>Customer's MIRR:</b> Modified Internal Rate of Return. Adjusts IRR by assuming reinvestment at a specified rate (here, the discount rate), often considered more realistic than IRR.</li>
+                    <li><b>Discounted Payback Period (Customer):</b> The time it takes for the cumulative discounted cash flows for the customer to equal or exceed the initial investment.</li>
+                    <li><b>Total Project Net NPV:</b> Combined NPV for EQORE and the customer.</li>
+                </ul>
+            </li>
+            <li><strong>Annual Cash Flows Table:</strong> Provides a detailed yearly breakdown of all financial components.
+                <ul style="padding-left: 20px; list-style-type: disc;"> 
+                    <li><b>Year:</b> Project year, with Year 0 representing the initial investment point.</li>
+                    <li><b>Total Gross Savings:</b> Total electricity savings generated by the battery system before any splits or deductions.</li>
+                    <li><b>EQORE Savings (CF):</b> The portion of gross electricity savings allocated to EQORE as cash flow.</li>
+                    <li><b>Customer Gross Savings:</b> The portion of gross electricity savings allocated to the customer before their specific costs/taxes.</li>
+                    <li><b>Depreciation:</b> Annual non-cash expense recognized for the wear and tear of the asset, used for tax calculations.</li>
+                    <li><b>Depr. Tax Shield:</b> The amount of tax saved due to the depreciation expense (Calculated as Depreciation * Corporate Tax Rate).</li>
+                    <li><b>Interest Paid:</b> The interest component of any loan payments made during the year.</li>
+                    <li><b>Principal Paid:</b> The principal repayment component of any loan payments made during the year.</li>
+                    <li><b>Interest Tax Shield:</b> The amount of tax saved due to the interest expense (Calculated as Interest Paid * Corporate Tax Rate).</li>
+                    <li><b>Loan Proceeds/(Repay):</b> Net cash flow related to financing. Positive in Year 0 if a loan is taken (proceeds received), negative in subsequent years for repayments (interest + principal).</li>
+                    <li><b>Customer Total CF:</b> The net annual cash flow for the customer after all their specific revenues, costs, tax impacts, and financing flows.</li>
+                    <li><b>EQORE Total CF:</b> The net annual cash flow for EQORE (currently this is the same as their savings share, but could include other costs/revenues for EQORE in more complex models).</li>
+                    <li><b>Total Project CF:</b> The combined net cash flow of the Customer and EQORE, representing the overall project's cash generation.</li>
+                </ul>
+            </li>
+            <li><strong>Charts:</strong> Visual representation of cash flows over time for EQORE and the customer.</li>
+        </ul>
+        </div>
+    </details>
+    <br>
+    """
+)
+
 st.title("🔋 Battery Storage Project NPV Model")
 
 # ─── Sidebar Inputs ──────────────────────────────────────────────────────────
@@ -12,13 +111,13 @@ THERMOFUSION = {
     "investment": 186900.00, "discount_rate": 4.5, "project_life": 15,
     "base_savings": 94000.00, "escalation": 3.0, "corp_tax": 28.0,
     "ira_credit_pct": 30.0, "bonus_depr_pct": 40.0, "finance_pct": 80.0,
-    "loan_rate": 9.0, "loan_term": 3, "savings_split": 50.0, # Added savings_split
+    "loan_rate": 9.0, "loan_term": 3, "savings_split": 33.0, # Added savings_split
 }
 AALBERTS = {
     "investment": 72000.00, "discount_rate": 4.5, "project_life": 15,
     "base_savings": 15600.00, "escalation": 3.0, "corp_tax": 28.0,
     "ira_credit_pct": 30.0, "bonus_depr_pct": 40.0, "finance_pct": 80.0,
-    "loan_rate": 9.0, "loan_term": 3, "savings_split": 50.0, # Added savings_split
+    "loan_rate": 9.0, "loan_term": 3, "savings_split": 15.0, # Added savings_split
 }
 
 def set_example(values):
@@ -276,22 +375,23 @@ st.markdown(
 
 # ─── Annual CF Table & Chart ───────────────────────────────────────────────
 cf_df = pd.DataFrame({
-    "Year": years,
-    "Total Gross Savings": total_savings_arr,
-    "EQORE Savings (CF)": eqore_cf, # EQORE's actual cash flow
-    "Customer Gross Savings": customer_gross_savings,
-    "Depreciation": depreciation_arr,
-    "Depr. Tax Shield": depreciation_tax_shield_arr,
-    "Interest Paid": interest_payments,
-    "Principal Paid": principal_payments,
-    "Interest Tax Shield": interest_tax_shield_arr,
-    "Loan Proceeds/(Repay)": financing_cash_flow, # Net loan cash flow
-    "Customer Total CF": customer_cf,
-    "EQORE Total CF": eqore_cf, # Same as EQORE Savings if no other items
-    "Total Project CF": total_project_cf,
+    "Year": years, # Project year, Year 0 is initial investment point
+    "Total Gross Savings": total_savings_arr, # Total electricity savings generated by the system
+    "EQORE Savings (CF)": eqore_cf, # Portion of gross savings allocated to EQORE
+    "Customer Gross Savings": customer_gross_savings, # Portion of gross savings allocated to the customer
+    "Depreciation": depreciation_arr, # Annual depreciation expense for tax purposes
+    "Depr. Tax Shield": depreciation_tax_shield_arr, # Tax savings due to depreciation (Depreciation * Tax Rate)
+    "Interest Paid": interest_payments, # Interest portion of loan payments
+    "Principal Paid": principal_payments, # Principal portion of loan payments
+    "Interest Tax Shield": interest_tax_shield_arr, # Tax savings due to interest expense (Interest Paid * Tax Rate)
+    "Loan Proceeds/(Repay)": financing_cash_flow, # Net cash flow from financing (Loan received - loan repayments)
+    "Customer Total CF": customer_cf, # Net annual cash flow for the customer
+    "EQORE Total CF": eqore_cf, # Net annual cash flow for EQORE (currently same as their savings share)
+    "Total Project CF": total_project_cf, # Combined net cash flow of Customer and EQORE
 })
 
 st.subheader("Annual Cash Flows")
+st.caption("This table shows the detailed breakdown of cash flows year by year for the project, customer, and EQORE.")
 st.dataframe(
     cf_df.style.format({
         "Year": "{:.0f}",
@@ -314,11 +414,14 @@ st.dataframe(
 col_chart1, col_chart2 = st.columns(2)
 with col_chart1:
     st.subheader("EQORE Cash Flows")
+    st.caption("This chart displays EQORE's net cash flow over the project life.")
     st.line_chart(cf_df.set_index("Year")[["EQORE Total CF"]]) # Simplified if only one CF item
 with col_chart2:
     st.subheader("Customer Cash Flows")
+    st.caption("This chart displays the customer's gross savings versus their net total cash flow over the project life.")
     st.line_chart(cf_df.set_index("Year")[["Customer Gross Savings", "Customer Total CF"]])
 
 st.subheader("Project Cash Flow Components (Customer)")
+st.caption("This bar chart breaks down the customer's total annual cash flow into its major components: gross savings, depreciation tax shield, interest paid (negative), and principal paid (negative).")
 st.bar_chart(cf_df.set_index("Year")[["Customer Gross Savings", "Depr. Tax Shield", "Interest Paid", "Principal Paid", "Customer Total CF"]])
 
