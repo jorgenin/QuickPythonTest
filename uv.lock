@@ -435,16 +435,54 @@ wheels = [
 ]
 
 [[package]]
+name = "pyxirr"
+version = "0.10.6"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c5/4a/3d2dc1bf565605a4f0e3ae6d5592518bb26698f4d929140d3ea16a4bb478/pyxirr-0.10.6.tar.gz", hash = "sha256:f0ed1fc8607f0769c238ffaf85f0bd3ddac7d383c125f1d9ff16d3a4b86a3cdf", size = 40452 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3c/c8/641fcf451e2a45f411106d8dbe534a59fbd204ca5c72b1ede01964214d5c/pyxirr-0.10.6-cp312-cp312-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:5315fcba78fba77cee652054c4e54221f3dc12706cacf14571c5c50d79245752", size = 984070 },
+    { url = "https://files.pythonhosted.org/packages/0d/2d/5fd26ccd022546ac67862215cda79cd2a89675673ed0d1d8691e8a1a22da/pyxirr-0.10.6-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:a7a723647326398f35d0068ed62a78f21a2ccbab0ff8833f8127a6e13d439946", size = 474118 },
+    { url = "https://files.pythonhosted.org/packages/f4/5a/2a278c34c10dfad28bd3fff1baef9f05bc83231f2c3caf0bf81bb5c9ecaa/pyxirr-0.10.6-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:8b34f4e10bdc87ae33ddcd83dfff43707d67d24341b2f4ee9a31f0ac1bb220b6", size = 512612 },
+    { url = "https://files.pythonhosted.org/packages/67/0c/16252ae2af1f2e49293ba7d2b89c848040df44107a823fcaca3f6f40784d/pyxirr-0.10.6-cp312-cp312-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:ede65da069ba4560340dbb599ef827c8f3216beba8ce228870d0f26ca70aa38d", size = 509017 },
+    { url = "https://files.pythonhosted.org/packages/ba/40/cea42d9eb752101a4e22ed8c4245e45e9b6ca90e39e45ad116adb9a11bbd/pyxirr-0.10.6-cp312-cp312-manylinux_2_17_ppc64.manylinux2014_ppc64.whl", hash = "sha256:4613554b41e24d465b7c1f136c84e884e2b227d816671ef702422aaf0d801ea8", size = 540065 },
+    { url = "https://files.pythonhosted.org/packages/95/84/1d84432f5fbdebb362f401f78cbcd6885d17c425020a9c226690f8d67fff/pyxirr-0.10.6-cp312-cp312-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:ca127523dbf39d09eda08e724ca20627298fb01048301a0aa9d8841d3639e2a0", size = 640107 },
+    { url = "https://files.pythonhosted.org/packages/fd/93/c4311aacc971b341000496c2ef901acc9708ac90e6afa56f2eb27b1055f3/pyxirr-0.10.6-cp312-cp312-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:0b4bd3d7e111b7e91b53622e5d601deb22de9ef53d87a3c54a8e4551e9524054", size = 883510 },
+    { url = "https://files.pythonhosted.org/packages/a2/90/844265597a59df4c28088317a7a5a05bb5a37f41403b4adc828cb4612013/pyxirr-0.10.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f7745cf488aa6a8daba2669b748d0f2712f3c257db4de71c20acf46fd6115b2f", size = 548026 },
+    { url = "https://files.pythonhosted.org/packages/a8/6c/bfe8405798977cce1eb026fc475c1a4de61bf73586d2788dbe8fd8d914a6/pyxirr-0.10.6-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:75a5487c6944d89144699bef295c7e8f7e60423fb379069586ec05cc94318cda", size = 683253 },
+    { url = "https://files.pythonhosted.org/packages/e1/0c/885ddaeeb9e838a1eb40ea3c5d99a3a25250f0794b83b7e2a9a368e6182c/pyxirr-0.10.6-cp312-cp312-musllinux_1_2_armv7l.whl", hash = "sha256:706cd21905390362631add1ad8e87c48a5d68c6bc4251130e6a9e5013a10bfd6", size = 756833 },
+    { url = "https://files.pythonhosted.org/packages/2a/e5/bc967d09edcef069c1837a8d18d7dc26ffd81e769053eb05cafa2ac2c46b/pyxirr-0.10.6-cp312-cp312-musllinux_1_2_i686.whl", hash = "sha256:ee2e1b1b3ea9793da6337e395f8c493c7a676fbc1a85b6d03773d91abbf34498", size = 704906 },
+    { url = "https://files.pythonhosted.org/packages/44/06/15b346c53e3f88ee77c55e4ef27cef6c495a8125169cfece71899b655fbe/pyxirr-0.10.6-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:0703ab5a7137aa221ecbe7bc5c9e0c99a370a625220750a973469b92c215fc01", size = 709045 },
+    { url = "https://files.pythonhosted.org/packages/0f/e5/28f889be53384e613a8f6ccff12bf03de9df99b3fab420758bdcb393f65a/pyxirr-0.10.6-cp312-none-win_amd64.whl", hash = "sha256:d5bead5a69cade163f65bacfd28e1b304c19a6f7509565f124f3187ad13c017a", size = 445210 },
+    { url = "https://files.pythonhosted.org/packages/38/10/bddf5887c01a897364b2f9864d4ac43606d9e210301d1a4af250ac766870/pyxirr-0.10.6-cp313-cp313-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:9d79bc8563c16987c1382a6956061bf2802d70bf01537a2009a86969c1f3d800", size = 984072 },
+    { url = "https://files.pythonhosted.org/packages/28/7e/45cef0f13d6fa0125360c98e3160ee63aeb5074d2513c4d2f1e3e573d29a/pyxirr-0.10.6-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:ed4b7a89a8d06bc5c56aa08c9498ce0bd28c1350110c9cdefbc73a8c5a69cd8c", size = 474117 },
+    { url = "https://files.pythonhosted.org/packages/12/00/30c807a6974a51d635d4dc5248e0fc9453a8b271e866f6c7591458d8edf7/pyxirr-0.10.6-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:536a534b4fc69dbeb9f30dbc11fc5d0806f3143483dc3bb5cdcc0275b7138e6e", size = 512613 },
+    { url = "https://files.pythonhosted.org/packages/90/86/1438f093c6e733b0f89d63931742c87657528fc6e1c4a0b95556dcd074c4/pyxirr-0.10.6-cp313-cp313-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:2b1390e8a5d5a5917b26916d715b24618493a50777042c306fe871e694a672ba", size = 509017 },
+    { url = "https://files.pythonhosted.org/packages/85/5c/d83f43de51a087b108803666d12cdb8d5d57a6de30a52f26a536b9fbf0c6/pyxirr-0.10.6-cp313-cp313-manylinux_2_17_ppc64.manylinux2014_ppc64.whl", hash = "sha256:cbe16ba89b477a5f87140d2522c06c7d5c88d56a7d314beec3aea03238c15e74", size = 540065 },
+    { url = "https://files.pythonhosted.org/packages/b1/b8/bde63b913341a26b0a8430ac224d7a3ea204dde80669d7ad5ff43306f3c1/pyxirr-0.10.6-cp313-cp313-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:6d2c72ad9495e01b99e086a1f2e7bf180858887df9344dbb62f59c6fe0fb2acc", size = 640108 },
+    { url = "https://files.pythonhosted.org/packages/35/ee/a255c33c8c6eb08ee9ec7447b2a8d44b957cf26f94416be68ce2cd17c693/pyxirr-0.10.6-cp313-cp313-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:7488d9c711cb83990ec96270d142be78e85ad726af8ed5f39906d80671ed1cdf", size = 883510 },
+    { url = "https://files.pythonhosted.org/packages/56/df/494df5b576485d8ced1c618aa8ca0695f8ef15fd48b25fb824814c78533f/pyxirr-0.10.6-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:10bf67d176720ffc78ce182fd70e5c712a002d4fcf799f6e53d1f31e24bd6743", size = 548025 },
+    { url = "https://files.pythonhosted.org/packages/30/6e/e105813911224dcc822d75cc0b05fd399c42822793d486464278013d3ccf/pyxirr-0.10.6-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:179a7fe7da0692f3668c9e230a7159e69475858197965c612c7519a99ae61669", size = 683253 },
+    { url = "https://files.pythonhosted.org/packages/fc/ac/79d09ac2e82341c940d034e8c812c906e09f4798b3bd5d2013cafedf7cfd/pyxirr-0.10.6-cp313-cp313-musllinux_1_2_armv7l.whl", hash = "sha256:40ce8fb1bcf57941854580d849cfc261d70b075fe555a1211c5f484e7a659312", size = 756833 },
+    { url = "https://files.pythonhosted.org/packages/d9/13/13541a35a43e93e37a65c5f4f647f0e221be9ec41ac5b7e546595e2cb747/pyxirr-0.10.6-cp313-cp313-musllinux_1_2_i686.whl", hash = "sha256:a4b7d7dd7b65e56268b55e56598d53c6c6a624f2adaca3665ce76533edec92e1", size = 704905 },
+    { url = "https://files.pythonhosted.org/packages/6d/2a/79541be5d4d7febb886f47192d84ad29212e424d5a86ed51a1d0cdc02ec4/pyxirr-0.10.6-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:2c77f392139a871feb723a58a49ca028b0b623c4429ae987d74d5068a8d0f2ff", size = 709045 },
+    { url = "https://files.pythonhosted.org/packages/af/c5/69f576c6f97e598a8c553a8f1e843355d81aa910cfa77a15e09a5ca9cac0/pyxirr-0.10.6-cp313-none-win_amd64.whl", hash = "sha256:7828cfed1dd81a663a4b3075dadd8bd691afa8ac969afb30ed6f5346de02bafa", size = 445212 },
+]
+
+[[package]]
 name = "quickpythontest"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "numpy" },
+    { name = "pyxirr" },
     { name = "streamlit" },
     { name = "watchdog" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "numpy", specifier = ">=2.2.5" },
+    { name = "pyxirr", specifier = ">=0.10.6" },
     { name = "streamlit", specifier = ">=1.45.0" },
     { name = "watchdog", specifier = ">=6.0.0" },
 ]
