@@ -12,16 +12,23 @@ st.html(
         <summary style="cursor: pointer; font-weight: bold; color: #2a9df4;">Click to view/hide Tool Explanation & Instructions</summary>
         <div style="background-color: #f0f2f6; padding: 20px; border-radius: 10px; margin-top: 10px;">
         <h2 style="color: #2a9df4;">🔋 Battery Storage Project NPV & Cash Flow Analyzer</h2>
-        <p>This tool helps analyze the financial viability of a battery storage project from both the customer's and EQORE's perspective.
-        It calculates Net Present Value (NPV), Internal Rate of Return (IRR), Modified Internal Rate of Return (MIRR), and Discounted Payback Period.</p>
+        <p>This tool helps analyze the financial viability of a battery storage project from both the customer's and EQORE's perspective. It calculates Net Present Value (NPV), Internal Rate of Return (IRR), Modified Internal Rate of Return (MIRR), and Discounted Payback Period. </p>
 
         <h4>How to Use:</h4>
-        <ul style="padding-left: 20px;>
-            <li><b>Load an Example (Optional):</b> Click "Thermofusion Example" or "Aalberts Example" in the sidebar to pre-fill inputs with sample data.</li>
+        <ul style="padding-left: 20px;">
             <li><b>Adjust Inputs:</b> Modify the parameters in the sidebar sections:
                 <ul style="padding-left: 20px;">
-                    <li><b>Project & Savings section:</b> Define the core project characteristics and electricity savings.</li>
-                    <li><b>Tax & Depreciation section:</b> Set corporate tax rates, IRA tax credits, and depreciation schedules.</li>
+                    <li><b>Project & Savings section:</b> Defines the core project characteristics and electricity savings.
+                        <ul style="padding-left: 20px;  list-style-type: disc;">
+                            <li>These are factors that we can determine based on our simulation tool that models what savings EQORE EMS can provide for different sized systems.</li>
+                            <li>EQORE Savings Share: This input value allows the opportunity to build models that experiment with shared savings. For the case of our real examples, we set the share to be equivalent to the price of our software subscription. For example, in ThermoFusion, the software cost is $2600/month which equates to roughly 33% of the total savings that the system generates. This is flexible method for modeling the economics and trade-off between the facility and EQORE.</li>
+                        </ul>
+                    </li>
+                    <li><b>Tax & Depreciation section:</b> Set corporate tax rates, IRA tax credits, and depreciation schedules.
+                        <ul style="padding-left: 20px;  list-style-type: disc;">
+                            <li>Corporate Tax rate should be the total effective corporate tax rate the customer faces. This is critical for the depreciation calculations. For example, Thermofusion faces 8.84 for California and 21% federal so the total effective is roughly 28%.</li>
+                        </ul>
+                    </li>
                     <li><b>Financing section:</b> Specify loan terms if the project is financed.</li>
                 </ul>
             </li>
@@ -36,23 +43,28 @@ st.html(
 
         <h4>Sidebar Input Sections:</h4>
         <ul style="padding-left: 20px;">
-            <li><strong>Examples:</strong> Quick-load predefined scenarios.</li>
+            <li><strong>Examples:</strong>
+                <ul style="padding-left: 20px; list-style-type: disc;">
+                    <li>Thermofusion: These are the real input values that we have found to be realistic for these two customers. These projects represent real case studies. The price is what the customer paid, the savings is what our software is projected to save, and all other inputs are either real or our best estimates.</li>
+                    <li>Aalberts: Similarly these are real numbers based on our NH installation.</li>
+                </ul>
+            </li>
             <li><strong>Project & Savings:</strong>
                 <ul style="padding-left: 20px;">
-                    <li><b>Upfront Investment ($):</b> Total initial cost of the battery system.</li>
-                    <li><b>Discount Rate (%):</b> Annual rate used to discount future cash flows to their present value. Reflects the time value of money and risk.</li>
-                    <li><b>Project Life (years):</b> Expected operational lifetime of the battery system.</li>
+                    <li><b>Upfront Investment ($):</b> Customer's total initial upfront price paid to EQORE.</li>
+                    <li><b>Discount Rate (%):</b> Annual rate used to discount future cash flows to their present value. Reflects the time value of money and risk. We used the current fed funds rate but recommend using whatever discount rate is comfortable.</li>
+                    <li><b>Project Life (years):</b> Expected operational lifetime of the battery system. We expect 15+ years but the hardware is warrantied or 10 by the manufacturer.</li>
                     <li><b>Year-1 Electricity Savings ($):</b> Estimated electricity bill savings in the first year of operation.</li>
-                    <li><b>Savings Escalation Rate (%):</b> Annual rate at which electricity savings are expected to increase (e.g., due to rising utility prices).</li>
+                    <li><b>Savings Escalation Rate (%):</b> Annual rate at which electricity savings are expected to increase (e.g., due to rising utility prices). We are not factoring in any improvements to software efficiency or added revenue streams therefore this is a conservative escalation.</li>
                     <li><b>EQORE Savings Share (%):</b> The percentage of total gross electricity savings allocated to EQORE. The remainder goes to the customer.</li>
                 </ul>
             </li>
             <li><strong>Tax & Depreciation:</strong>
                 <ul style="padding-left: 20px;">
-                    <li><b>Federal Corp Tax Rate (%):</b> Corporate income tax rate applicable to the customer.</li>
-                    <li><b>IRA Tax Credit (%):</b> Percentage of the investment eligible for an Investment Tax Credit under the Inflation Reduction Act.</li>
-                    <li><b>Bonus Depreciation (%):</b> Percentage of the investment that can be depreciated immediately in Year 0.</li>
-                    <li><em>MACRS rates are pre-defined for a 5-year schedule.</em></li>
+                    <li><b>Corp Tax Rate (%):</b> Total Effective corporate income tax rate applicable to the customer.</li>
+                    <li><b>IRA Tax Credit (%):</b> Percentage of the investment eligible for an Investment Tax Credit under the Inflation Reduction Act. Currently set to 30% by the IRA for Battery Storage. 40% if the battery storage system meets domestic requirements.</li>
+                    <li><b>Bonus Depreciation (%):</b> Percentage of the investment that can be depreciated immediately in Year 0. Currently 40% for 2025, 20% for 2026 and phased out in 2027.</li>
+                    <li>MACRS rates are pre-defined for a 5-year schedule. This is the MACRS classification for Battery storage systems.</li>
                 </ul>
             </li>
             <li><strong>Financing:</strong>
@@ -80,7 +92,7 @@ st.html(
                 </ul>
             </li>
             <li><strong>Annual Cash Flows Table:</strong> Provides a detailed yearly breakdown of all financial components.
-                <ul style="padding-left: 20px; list-style-type: disc;"> 
+                <ul style="padding-left: 20px; list-style-type: disc;">
                     <li><b>Year:</b> Project year, with Year 0 representing the initial investment point.</li>
                     <li><b>Total Gross Savings:</b> Total electricity savings generated by the battery system before any splits or deductions.</li>
                     <li><b>EQORE Savings (CF):</b> The portion of gross electricity savings allocated to EQORE as cash flow.</li>
@@ -190,10 +202,10 @@ ira_credit = ira_credit_pct * investment
 # ─── 3) Depreciation Schedule ──────────────────────────────────────────
 depreciation_arr = np.zeros_like(years, float)
 # Bonus Depreciation in Year 0
-depreciation_arr[0] = bonus_depr_pct * investment
+depreciation_arr[0] = bonus_depr_pct * (investment - ira_credit/2)
 
 # MACRS Depreciation (on remaining basis, starting Year 1)
-macrs_basis = investment * (1 - bonus_depr_pct)
+macrs_basis = (investment - ira_credit/2) * (1 - bonus_depr_pct)
 for i in range(len(macrs_rates)):
     year_idx = i + 1  # MACRS Year 1 is Project Year 1
     if year_idx < len(depreciation_arr):
