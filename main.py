@@ -8,7 +8,7 @@ st.set_page_config(page_title="Battery Storage NPV Model", layout="wide")
 
 st.html(
     """
-    <details>
+    <details>f
         <summary style="cursor: pointer; font-weight: bold; color: #2a9df4;">Click to view/hide Tool Explanation & Instructions</summary>
         <div style="background-color: #f0f2f6; padding: 20px; border-radius: 10px; margin-top: 10px;">
         <h2 style="color: #2a9df4;">🔋 Battery Storage Project NPV & Cash Flow Analyzer</h2>
@@ -202,12 +202,12 @@ ira_credit = ira_credit_pct * investment
 # ─── 3) Depreciation Schedule ──────────────────────────────────────────
 depreciation_arr = np.zeros_like(years, float)
 # Bonus Depreciation in Year 0
-depreciation_arr[0] = bonus_depr_pct * (investment - ira_credit/2)
+depreciation_arr[1] = bonus_depr_pct * (investment - ira_credit/2)
 
 # MACRS Depreciation (on remaining basis, starting Year 1)
 macrs_basis = (investment - ira_credit/2) * (1 - bonus_depr_pct)
 for i in range(len(macrs_rates)):
-    year_idx = i + 1  # MACRS Year 1 is Project Year 1
+    year_idx = i + 2  # MACRS Year 1 is Project Year 1
     if year_idx < len(depreciation_arr):
         depreciation_arr[year_idx] = macrs_rates[i] * macrs_basis
     else:
@@ -276,7 +276,7 @@ customer_cf = np.zeros_like(years, float)
 # Outflows: Full Investment
 # Inflows: IRA Credit, Loan Principal Received
 # Tax Impact: Bonus Depreciation Tax Shield
-customer_cf[0] = -investment + ira_credit + loan_principal_amount + depreciation_tax_shield_arr[0]
+customer_cf[0] = -investment + loan_principal_amount 
 
 # Years 1+ for Customer:
 # Levered Free Cash Flow to Equity approach:
@@ -286,6 +286,7 @@ for y_idx in range(1, project_life + 1):
                        + depreciation_tax_shield_arr[y_idx] \
                        - principal_payments[y_idx]
 
+customer_cf[1] += ira_credit+ depreciation_tax_shield_arr[1]
 customer_npv = (customer_cf * dfac).sum()
 
 # Total Project Cash Flows (Sum of Stakeholders)
